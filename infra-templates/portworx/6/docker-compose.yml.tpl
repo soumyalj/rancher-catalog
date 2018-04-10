@@ -6,7 +6,7 @@ services:
     privileged: true
     labels:
       io.rancher.container.dns: 'true'
-      {{- if eq .Values.INSTALL_SCOPE "global" }}
+      {{- if eq .Values.INSTALL_SCALE "global" }}
       io.rancher.scheduler.global: 'true'
       {{- end }}
       io.rancher.container.pull_image: always

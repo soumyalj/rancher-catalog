@@ -4,15 +4,15 @@
   description: "Portworx Docker Volume Driver"
   questions:
 
-    - variable: INSTALL_SCOPE
-      label: Install scope
-      description: "Determine if Portworx should install globally on all the nodes, or controlled individually via number of stacks."
+    - variable: INSTALL_SCALE
+      label: Install scale
+      description: "Determine if Portworx should install globally on all the nodes, or scaled via stacks (starting with Scale=1)."
       required: true
       default: "global"
       type: enum
       options:
       - "global"
-      - "individual"
+      - "scaled"
     - variable: "CLUSTER_ID"
       description: "Arbitrary Cluster ID, common to all nodes in PX cluster "
       label: "Cluster ID"
