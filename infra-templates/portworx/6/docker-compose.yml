@@ -6,7 +6,9 @@ services:
     privileged: true
     labels:
       io.rancher.container.dns: 'true'
+      {{- if eq .Values.INSTALL_SCOPE "global" }}
       io.rancher.scheduler.global: 'true'
+      {{- end }}
       io.rancher.container.pull_image: always
       io.rancher.container.hostname_override: container_name
       io.rancher.scheduler.affinity:container_label_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
