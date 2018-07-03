@@ -1,7 +1,7 @@
 
-{{- $k8sImage:="rancher/k8s:v1.10.3-rancher1-1" }}
+{{- $k8sImage:="rancher/k8s:v1.11.0-rancher1-1" }}
 {{- $etcdImage:="rancher/etcd:v2.3.7-13" }}
-{{- $kubectldImage:="rancher/kubectld:v0.8.7" }}
+{{- $kubectldImage:="rancher/kubectld:v0.8.8" }}
 {{- $etcHostUpdaterImage:="rancher/etc-host-updater:v0.0.3" }}
 {{- $k8sAgentImage:="rancher/kubernetes-agent:v0.6.8" }}
 {{- $k8sAuthImage:="rancher/kubernetes-auth:v0.0.8" }}
@@ -35,6 +35,7 @@ kubelet:
         - --anonymous-auth=false
         - --volume-plugin-dir=/var/lib/kubelet/volumeplugins
         - --client-ca-file=/etc/kubernetes/ssl/ca.pem
+        - --cni-bin-dir=/opt/cni/bin,/opt/loopback/bin
         {{- if and (ne .Values.REGISTRY "") (ne .Values.POD_INFRA_CONTAINER_IMAGE "") }}
         - --pod-infra-container-image=${REGISTRY}/${POD_INFRA_CONTAINER_IMAGE}
         {{- else if (ne .Values.POD_INFRA_CONTAINER_IMAGE "") }}
@@ -102,6 +103,7 @@ kubelet-unschedulable:
         - --cluster-domain=cluster.local
         - --network-plugin=cni
         - --cni-conf-dir=/etc/cni/managed.d
+        - --cni-bin-dir=/opt/cni/bin,/opt/loopback/bin
         {{- if and (ne .Values.REGISTRY "") (ne .Values.POD_INFRA_CONTAINER_IMAGE "") }}
         - --pod-infra-container-image=${REGISTRY}/${POD_INFRA_CONTAINER_IMAGE}
         {{- else if (ne .Values.POD_INFRA_CONTAINER_IMAGE "") }}
