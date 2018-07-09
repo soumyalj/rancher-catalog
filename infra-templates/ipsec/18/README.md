@@ -6,11 +6,10 @@ Rancher networking plugin using IPsec.
 
 Traffic to and from hosts require UDP ports `500` and `4500` to be open.
 
-### Changelog - 0.2.4
+### Changelog - 0.2.5
 
-#### Router, CNI Driver, Connectivity Check [rancher/net:v0.13.13]
-* Fixed a Null Pointer Exception problem causing healthcheck issues.
-* Fixed issues with erroring out during startup of ipsec.
+#### Router, CNI Driver, Connectivity Check [rancher/net:v0.13.14]
+* Added loglevel to the service to help with debugging
 
 ### Configuration options
 * `RANCHER_DEBUG`
