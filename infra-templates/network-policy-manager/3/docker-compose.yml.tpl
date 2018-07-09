@@ -1,11 +1,15 @@
 version: '2'
+
+{{- $npmImage:="rancher/network-policy-manager:v0.2.8" }}
+
 services:
-  healthcheck:
+  network-policy-manager:
+    privileged: true
+    network_mode: host
+    pid: host
+    image: {{$npmImage}}
     labels:
-      io.rancher.container.create_agent: 'true'
       io.rancher.scheduler.global: 'true'
-    image: rancher/healthcheck:v0.3.8
-    command: healthcheck --metadata-address 169.254.169.250
     logging:
       driver: json-file
       options:
