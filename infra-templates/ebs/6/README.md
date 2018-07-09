@@ -1,9 +1,10 @@
 ## Rancher EBS
 
-### Changelog - 0.5.0
+### Changelog - 0.6.0
 
-#### Rancher EBS [rancher/storage-ebs:v0.9.1]
- * Switched to stop using docker volumes and uses flex volumes
+#### Rancher EBS [rancher/storage-ebs:v0.9.7]
+ * Added support for volume partitions
+ * Added ability to specify snapshot by tag key and value pair
 
 ### Restrictions when using EBS
 
