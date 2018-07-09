@@ -10,8 +10,9 @@ This stack provides the following services:
 
 #### Network Manager [rancher/network-manager:v0.7.22]
 * Fixed an issue with iptables rules when accessing expose port from self host.
+* Added loglevel to the service to help with debugging
 
-#### Metadata [rancher/metadata:v0.10.3]
+#### Metadata [rancher/metadata:v0.10.4]
 * Added loglevel to the service to help with debugging
 
 #### DNS [rancher/dns:v0.17.4]
