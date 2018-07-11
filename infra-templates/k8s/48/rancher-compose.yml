@@ -257,6 +257,14 @@ kubernetes:
     retain_ip: true
 
 etcd:
+    metadata:
+        sans:
+        - "IP:127.0.0.1"
+        - "localhost"
+        - "etcd.kubernetes.rancher.internal"
+        - "kubernetes-etcd-1"
+        - "kubernetes-etcd-2"
+        - "kubernetes-etcd-3"
     retain_ip: true
     scale_policy:
         increment: 1
@@ -264,7 +272,6 @@ etcd:
         min: 1
     health_check:
         port: 2378
-        request_line: GET /health HTTP/1.0
         interval: 5000
         response_timeout: 3000
         unhealthy_threshold: 3

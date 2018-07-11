@@ -1,6 +1,6 @@
 
-{{- $k8sImage:="rancher/k8s:v1.11.0-rancher1-1" }}
-{{- $etcdImage:="rancher/etcd:v2.3.7-13" }}
+{{- $k8sImage:="rancher/k8s:v1.11.0-rancher1-2" }}
+{{- $etcdImage:="rancher/etcd:v2.3.7-14" }}
 {{- $kubectldImage:="rancher/kubectld:v0.8.8" }}
 {{- $etcHostUpdaterImage:="rancher/etc-host-updater:v0.0.3" }}
 {{- $k8sAgentImage:="rancher/kubernetes-agent:v0.6.9" }}
@@ -174,6 +174,8 @@ etcd:
         {{- end }}
         io.rancher.scheduler.affinity:container_label_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
         io.rancher.sidekicks: data
+        io.rancher.container.agent.role: environmentAdmin
+        io.rancher.container.create_agent: 'true'
     environment:
         RANCHER_DEBUG: 'true'
         EMBEDDED_BACKUPS: '${EMBEDDED_BACKUPS}'
@@ -211,7 +213,7 @@ kubernetes:
         - --storage-backend=etcd2
         - --storage-media-type=application/json
         - --service-cluster-ip-range=${SERVICE_CLUSTER_CIDR}
-        - --etcd-servers=http://etcd.kubernetes.rancher.internal:2379
+        - --etcd-servers=https://etcd.kubernetes.rancher.internal:2379
         - --insecure-bind-address=0.0.0.0
         - --insecure-port=0
         - --cloud-provider=${CLOUD_PROVIDER}
@@ -230,6 +232,9 @@ kubernetes:
         - --authentication-token-webhook-config-file=/etc/kubernetes/authconfig
         - --runtime-config=authentication.k8s.io/v1beta1=true
         - --external-hostname=kubernetes.kubernetes.rancher.internal
+        - --etcd-cafile=/etc/kubernetes/etcd/ca.pem
+        - --etcd-certfile=/etc/kubernetes/etcd/cert.pem
+        - --etcd-keyfile=/etc/kubernetes/etcd/key.pem
         {{- if eq .Values.AUDIT_LOGS "true" }}
         - --audit-log-path=-
         - --feature-gates=AdvancedAuditing=false
