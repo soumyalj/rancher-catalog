@@ -183,6 +183,12 @@ etcd:
         BACKUP_RETENTION: '${BACKUP_RETENTION}'
         ETCD_HEARTBEAT_INTERVAL: '${ETCD_HEARTBEAT_INTERVAL}'
         ETCD_ELECTION_TIMEOUT: '${ETCD_ELECTION_TIMEOUT}'
+        ETCD_CA_FILE: '/etc/etcd/ssl/ca.pem'
+        ETCD_KEY_FILE: '/etc/etcd/ssl/key.pem'
+        ETCD_CERT_FILE: '/etc/etcd/ssl/cert.pem'
+        ETCDCTL_CA_FILE: '/etc/etcd/ssl/ca.pem'
+        ETCDCTL_KEY_FILE: '/etc/etcd/ssl/key.pem'
+        ETCDCTL_CERT_FILE: '/etc/etcd/ssl/cert.pem'
     volumes:
     - etcd:/pdata:z
     - /var/etcd/backups:/data-backup:z
