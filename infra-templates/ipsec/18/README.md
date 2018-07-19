@@ -12,7 +12,7 @@ Traffic to and from hosts require UDP ports `500` and `4500` to be open.
 * Added loglevel to the service to help with debugging
 * Remove connectivity check requirements during upgrades.
 * Changed default connection check interval from 5 seconds to 10 seconds.
-* Changed default connection timeout from 1 seconds to 3 seconds.
+* Changed default connection timeout from 1 seconds to 60 seconds.
 * Connectivity check requirement is driven by the flag
 
 ### Configuration options
