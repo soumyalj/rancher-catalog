@@ -32,7 +32,7 @@
           label: "Healthcheck response timeout"
           description: "The number of milliseconds before a check without response times out."
           type: "int"
-          default: 2000
+          default: 30000
           required: true
         - variable: "HEALTHCHECK_UNHEALTHY_THRESHHOLD"
           label: "Healthcheck unhealthy threshhold"
